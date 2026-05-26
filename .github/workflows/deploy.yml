@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # allows manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      # ─── OPTION A: repo is named "yourusername.github.io" ──────────────────
+      # Uncomment the line below and delete Option B's line
+      # - run: flutter build web --base-href /
+
+      # ─── OPTION B: repo is a project site (e.g. "portfolio") ───────────────
+      # Replace "portfolio" with your actual repo name
+      - name: Build web
+        run: flutter build web --base-href /portfolio/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web

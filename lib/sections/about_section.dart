@@ -91,19 +91,25 @@ class _AboutText extends StatelessWidget {
 class _StatsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      mainAxisSpacing: 16,
-      crossAxisSpacing: 16,
-      childAspectRatio: 1.4,
-      children: const [
-        _StatCard(number: '3+', label: 'Years Experience'),
-        _StatCard(number: '20+', label: 'Apps Shipped'),
-        _StatCard(number: '10k+', label: 'Users Reached'),
-        _StatCard(number: '∞', label: 'Lines of Dart'),
-      ],
+    const cards = [
+      _ValueCard(icon: Icons.phone_iphone_rounded, label: 'iOS & Android', sub: 'Cross-platform apps'),
+      _ValueCard(icon: Icons.route_rounded, label: 'End-to-End', sub: 'From UI to store'),
+      _ValueCard(icon: Icons.self_improvement_rounded, label: 'Self-Taught', sub: 'YouTube → Production'),
+      _ValueCard(icon: Icons.handshake_rounded, label: 'Open to Work', sub: 'Freelance & projects'),
+      _ValueCard(icon: Icons.rocket_launch_rounded, label: 'App Publishing', sub: 'I\'ll publish your app on App Store & Play Store'),
+    ];
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final cardWidth = (constraints.maxWidth - 16) / 2;
+        return Wrap(
+          spacing: 16,
+          runSpacing: 16,
+          children: cards
+              .map((card) => SizedBox(width: cardWidth, child: card))
+              .toList(),
+        );
+      },
     )
         .animate()
         .fadeIn(delay: 200.ms, duration: 700.ms)
@@ -117,11 +123,12 @@ class _StatsGrid extends StatelessWidget {
   }
 }
 
-class _StatCard extends StatelessWidget {
-  final String number;
+class _ValueCard extends StatelessWidget {
+  final IconData icon;
   final String label;
+  final String sub;
 
-  const _StatCard({required this.number, required this.label});
+  const _ValueCard({required this.icon, required this.label, required this.sub});
 
   @override
   Widget build(BuildContext context) {
@@ -136,18 +143,19 @@ class _StatCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            number,
-            style: GoogleFonts.spaceGrotesk(
-              fontSize: 36,
-              fontWeight: FontWeight.w700,
-              color: AppColors.accent,
-              height: 1,
-            ),
-          ),
-          const SizedBox(height: 6),
+          Icon(icon, color: AppColors.accent, size: 26),
+          const SizedBox(height: 12),
           Text(
             label,
+            style: GoogleFonts.spaceGrotesk(
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              color: AppColors.textPrimary,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            sub,
             style: GoogleFonts.inter(
               fontSize: 13,
               color: AppColors.textSecondary,

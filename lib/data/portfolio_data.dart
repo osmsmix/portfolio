@@ -27,7 +27,7 @@ class JourneyStep {
 }
 
 class PortfolioData {
-  static const String name = 'Oussama Mohamed';
+  static const String name = 'Oussama Mohamed El Hadi';
   static const String title = 'Flutter Developer';
   static const String tagline =
       'I build beautiful, performant cross-platform apps for mobile and web.';
@@ -39,6 +39,7 @@ class PortfolioData {
   static const String email = 'oussama.mohamedelhadi@gmail.com';
   static const String github = 'https://github.com/osmsmix';
   static const String linkedin = 'https://www.linkedin.com/in/oussama-mohamed-el-hadi-3b5344260';
+  static const String? cvUrl = null; // Set to your CV PDF URL when ready
 
   static const List<String> skills = [
     'Flutter',

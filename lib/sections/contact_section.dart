@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -58,6 +59,8 @@ class ContactSection extends StatelessWidget {
                   label: 'Send an Email',
                   onTap: () => _open('mailto:${PortfolioData.email}'),
                 ),
+                const SizedBox(height: 16),
+                _CopyEmailButton(),
                 const SizedBox(height: 56),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -189,6 +192,51 @@ class _SocialLinkState extends State<_SocialLink> {
               ),
               const SizedBox(width: 6),
               Text(widget.label),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _CopyEmailButton extends StatefulWidget {
+  @override
+  State<_CopyEmailButton> createState() => _CopyEmailButtonState();
+}
+
+class _CopyEmailButtonState extends State<_CopyEmailButton> {
+  bool _copied = false;
+
+  Future<void> _copy() async {
+    await Clipboard.setData(const ClipboardData(text: PortfolioData.email));
+    setState(() => _copied = true);
+    await Future.delayed(const Duration(seconds: 2));
+    if (mounted) setState(() => _copied = false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: _copy,
+        child: AnimatedDefaultTextStyle(
+          duration: const Duration(milliseconds: 200),
+          style: GoogleFonts.firaCode(
+            fontSize: 14,
+            color: _copied ? AppColors.accent : AppColors.textMuted,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                _copied ? Icons.check_rounded : Icons.copy_rounded,
+                size: 14,
+                color: _copied ? AppColors.accent : AppColors.textMuted,
+              ),
+              const SizedBox(width: 8),
+              Text(_copied ? 'Copied!' : PortfolioData.email),
             ],
           ),
         ),

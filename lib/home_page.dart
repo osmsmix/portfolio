@@ -7,6 +7,8 @@ import 'sections/projects_section.dart';
 import 'sections/experience_section.dart';
 import 'sections/contact_section.dart';
 import 'widgets/nav_bar.dart';
+import 'widgets/animated_section.dart';
+import 'widgets/social_sidebar.dart';
 import 'theme/app_theme.dart';
 
 class HomePage extends StatefulWidget {
@@ -57,11 +59,26 @@ class _HomePageState extends State<HomePage> {
                   onProjectsTap: () => _scrollTo(_projectsKey),
                   onContactTap: () => _scrollTo(_contactKey),
                 ),
-                AboutSection(key: _aboutKey),
-                SkillsSection(key: _skillsKey),
-                ProjectsSection(key: _projectsKey),
-                ExperienceSection(key: _experienceKey),
-                ContactSection(key: _contactKey),
+                AnimatedSection(
+                  id: 'about',
+                  child: AboutSection(key: _aboutKey),
+                ),
+                AnimatedSection(
+                  id: 'skills',
+                  child: SkillsSection(key: _skillsKey),
+                ),
+                AnimatedSection(
+                  id: 'projects',
+                  child: ProjectsSection(key: _projectsKey),
+                ),
+                AnimatedSection(
+                  id: 'experience',
+                  child: ExperienceSection(key: _experienceKey),
+                ),
+                AnimatedSection(
+                  id: 'contact',
+                  child: ContactSection(key: _contactKey),
+                ),
                 const _Footer(),
               ],
             ),
@@ -73,6 +90,7 @@ class _HomePageState extends State<HomePage> {
             onExperienceTap: () => _scrollTo(_experienceKey),
             onContactTap: () => _scrollTo(_contactKey),
           ),
+          const SocialSidebar(),
         ],
       ),
     );
@@ -90,7 +108,7 @@ class _Footer extends StatelessWidget {
         border: Border(top: BorderSide(color: AppColors.border)),
       ),
       child: Text(
-        'Built with Flutter · Oussama Mohamed © 2026',
+        'Built with Flutter · Oussama Mohamed El Hadi © 2026',
         style: GoogleFonts.inter(
           fontSize: 13,
           color: AppColors.textMuted,

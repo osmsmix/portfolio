@@ -120,31 +120,26 @@ class _JourneyItem extends StatelessWidget {
                   ...step.details.map((d) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 10),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 2),
-                            child: Text(
-                              '→',
+                      child: Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '→  ',
                               style: GoogleFonts.inter(
                                 color: AppColors.accent,
                                 fontSize: 14,
                               ),
                             ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Text(
-                              d,
+                            TextSpan(
+                              text: d,
                               style: GoogleFonts.inter(
                                 fontSize: 15,
                                 color: AppColors.textSecondary,
                                 height: 1.6,
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     );
                   }),

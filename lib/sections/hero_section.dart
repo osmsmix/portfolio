@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../theme/app_theme.dart';
 import '../data/portfolio_data.dart';
+import '../widgets/typewriter_text.dart';
 
 class HeroSection extends StatelessWidget {
   final VoidCallback onProjectsTap;
@@ -48,11 +50,11 @@ class HeroSection extends StatelessWidget {
                     )
                         .animate()
                         .fadeIn(delay: 100.ms, duration: 600.ms),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 14),
                     Text(
-                      "Hi, I'm\nOussama\nMohamed.",
+                      "Hi, I'm\nOussama\nMohamed El Hadi.",
                       style: GoogleFonts.spaceGrotesk(
-                        fontSize: isMobile ? 52 : 84,
+                        fontSize: isMobile ? 44 : 72,
                         fontWeight: FontWeight.w800,
                         color: AppColors.textPrimary,
                         height: 1.0,
@@ -68,21 +70,20 @@ class HeroSection extends StatelessWidget {
                           duration: 700.ms,
                           curve: Curves.easeOut,
                         ),
-                    const SizedBox(height: 28),
+                    const SizedBox(height: 20),
                     ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 540),
-                      child: Text(
-                        PortfolioData.tagline,
+                      child: TypewriterText(
+                        text: PortfolioData.tagline,
+                        startDelay: const Duration(milliseconds: 900),
                         style: GoogleFonts.inter(
                           fontSize: isMobile ? 17 : 19,
                           color: AppColors.textSecondary,
                           height: 1.7,
                         ),
                       ),
-                    )
-                        .animate()
-                        .fadeIn(delay: 500.ms, duration: 600.ms),
-                    const SizedBox(height: 44),
+                    ).animate().fadeIn(delay: 500.ms, duration: 400.ms),
+                    const SizedBox(height: 32),
                     Wrap(
                       spacing: 16,
                       runSpacing: 16,
@@ -97,6 +98,18 @@ class HeroSection extends StatelessWidget {
                           isPrimary: false,
                           onTap: onContactTap,
                         ),
+                        if (PortfolioData.cvUrl != null)
+                          _HeroButton(
+                            label: 'Download CV',
+                            isPrimary: false,
+                            onTap: () async {
+                              final uri = Uri.parse(PortfolioData.cvUrl!);
+                              if (await canLaunchUrl(uri)) {
+                                await launchUrl(uri,
+                                    mode: LaunchMode.externalApplication);
+                              }
+                            },
+                          ),
                       ],
                     ).animate().fadeIn(delay: 700.ms, duration: 600.ms),
                   ],

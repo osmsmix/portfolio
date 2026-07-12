@@ -24,10 +24,10 @@ class ExperienceSection extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SectionTitle(label: 'Experience'),
+                const SectionTitle(label: 'My Journey'),
                 const SizedBox(height: 16),
                 Text(
-                  "Where I've Worked",
+                  'How I Got Here',
                   style: GoogleFonts.spaceGrotesk(
                     fontSize: isMobile ? 32 : 40,
                     fontWeight: FontWeight.w700,
@@ -36,10 +36,10 @@ class ExperienceSection extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 48),
-                ...PortfolioData.experiences.asMap().entries.map((entry) {
-                  return _ExperienceItem(
-                    experience: entry.value,
-                    isLast: entry.key == PortfolioData.experiences.length - 1,
+                ...PortfolioData.journey.asMap().entries.map((entry) {
+                  return _JourneyItem(
+                    step: entry.value,
+                    isLast: entry.key == PortfolioData.journey.length - 1,
                     delay: (entry.key * 150).ms,
                   );
                 }),
@@ -52,13 +52,13 @@ class ExperienceSection extends StatelessWidget {
   }
 }
 
-class _ExperienceItem extends StatelessWidget {
-  final Experience experience;
+class _JourneyItem extends StatelessWidget {
+  final JourneyStep step;
   final bool isLast;
   final Duration delay;
 
-  const _ExperienceItem({
-    required this.experience,
+  const _JourneyItem({
+    required this.step,
     required this.isLast,
     required this.delay,
   });
@@ -96,12 +96,12 @@ class _ExperienceItem extends StatelessWidget {
           const SizedBox(width: 28),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(bottom: isLast ? 0 : 52),
+              padding: EdgeInsets.only(bottom: isLast ? 0 : 48),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    experience.period,
+                    step.year,
                     style: GoogleFonts.firaCode(
                       fontSize: 13,
                       color: AppColors.accent,
@@ -109,23 +109,15 @@ class _ExperienceItem extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    experience.role,
+                    step.title,
                     style: GoogleFonts.spaceGrotesk(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                       color: AppColors.textPrimary,
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    experience.company,
-                    style: GoogleFonts.inter(
-                      fontSize: 15,
-                      color: AppColors.textSecondary,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  ...experience.highlights.map((h) {
+                  const SizedBox(height: 16),
+                  ...step.details.map((d) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Row(
@@ -144,7 +136,7 @@ class _ExperienceItem extends StatelessWidget {
                           const SizedBox(width: 12),
                           Expanded(
                             child: Text(
-                              h,
+                              d,
                               style: GoogleFonts.inter(
                                 fontSize: 15,
                                 color: AppColors.textSecondary,

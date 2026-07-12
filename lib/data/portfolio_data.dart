@@ -14,17 +14,15 @@ class Project {
   });
 }
 
-class Experience {
-  final String role;
-  final String company;
-  final String period;
-  final List<String> highlights;
+class JourneyStep {
+  final String year;
+  final String title;
+  final List<String> details;
 
-  const Experience({
-    required this.role,
-    required this.company,
-    required this.period,
-    required this.highlights,
+  const JourneyStep({
+    required this.year,
+    required this.title,
+    required this.details,
   });
 }
 
@@ -83,25 +81,37 @@ class PortfolioData {
     ),
   ];
 
-  static const List<Experience> experiences = [
-    Experience(
-      role: 'Flutter Developer',
-      company: 'Tech Company',
-      period: '2023 — Present',
-      highlights: [
-        'Shipped 3 production apps with 10k+ active users',
-        'Reduced app startup time by 35% through lazy loading and code splitting',
-        'Mentored junior developers on Flutter architecture and best practices',
+  static const List<JourneyStep> journey = [
+    JourneyStep(
+      year: '2023',
+      title: 'Discovered Flutter',
+      details: [
+        'Self-taught Flutter and Dart entirely through YouTube — no bootcamp, no course.',
+        'Started building small apps to practice while studying Petroleum Engineering.',
       ],
     ),
-    Experience(
-      role: 'Mobile Developer Intern',
-      company: 'Startup',
-      period: '2022 — 2023',
-      highlights: [
-        'Built pixel-perfect UI components from Figma designs using Flutter',
-        'Integrated REST APIs and managed state with Provider',
-        'Participated in agile ceremonies and weekly code reviews',
+    JourneyStep(
+      year: '2024',
+      title: 'Built Mauri-Citat',
+      details: [
+        'Designed and developed a full-stack football pitch booking app from scratch.',
+        'Integrated Supabase, Firebase, interactive maps, push notifications, and trilingual support.',
+      ],
+    ),
+    JourneyStep(
+      year: '2025',
+      title: 'Shipped on Both Stores',
+      details: [
+        'Published Mauri-Citat on the App Store and Google Play — fully solo.',
+        'Handled everything: architecture, UI, backend, deployment, and store submissions.',
+      ],
+    ),
+    JourneyStep(
+      year: 'Now',
+      title: 'Building More',
+      details: [
+        'Actively looking for Flutter projects and collaborations.',
+        'Turning ideas into polished, production-ready apps.',
       ],
     ),
   ];

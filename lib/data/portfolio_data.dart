@@ -38,20 +38,21 @@ class PortfolioData {
       "I care deeply about clean architecture, smooth animations, and intuitive UX "
       "that makes complex products feel effortless.";
 
-  static const String email = 'hello@oussama.dev';
-  static const String github = 'https://github.com/oussama';
-  static const String linkedin = 'https://linkedin.com/in/oussama';
+  static const String email = 'oussama.mohamedelhadi@gmail.com';
+  static const String github = 'https://github.com/osmsmix';
+  static const String linkedin = 'https://www.linkedin.com/in/oussama-mohamed-el-hadi-3b5344260';
 
   static const List<String> skills = [
     'Flutter',
     'Dart',
+    'Supabase',
     'Firebase',
     'REST APIs',
-    'GraphQL',
+    'Provider',
     'Riverpod',
     'Bloc',
-    'Provider',
-    'GetX',
+    'Flutter Map',
+    'Geolocator',
     'Git & GitHub',
     'Figma',
     'Android',
@@ -59,40 +60,26 @@ class PortfolioData {
     'Flutter Web',
     'SQLite',
     'Hive',
-    'Unit Testing',
-    'Widget Testing',
-    'CI/CD',
     'Push Notifications',
+    'Localizations (i18n)',
+    'CI/CD',
   ];
 
   static const List<Project> projects = [
     Project(
-      title: 'E-Commerce App',
+      title: 'Mauri-Citat',
       description:
-          'Full-featured shopping app with product catalog, cart management, order tracking, and Firebase authentication.',
-      tags: ['Flutter', 'Firebase', 'Riverpod', 'Stripe'],
-      githubUrl: 'https://github.com',
-    ),
-    Project(
-      title: 'Task Manager',
-      description:
-          'Cross-platform productivity app with real-time sync, offline support, and team collaboration features.',
-      tags: ['Flutter', 'Hive', 'Bloc', 'REST API'],
-      githubUrl: 'https://github.com',
-    ),
-    Project(
-      title: 'Chat Application',
-      description:
-          'Real-time messaging with media sharing, push notifications, and Firebase Cloud Messaging.',
-      tags: ['Flutter', 'Firebase', 'Provider', 'FCM'],
-      githubUrl: 'https://github.com',
+          'Football pitch booking app for Mauritania. Players browse pitches on an interactive map, check availability, and book by time slot. Owners manage reservations in real time. Trilingual (AR/FR/EN).',
+      tags: ['Flutter', 'Supabase', 'Firebase', 'Flutter Map', 'Provider'],
+      liveUrl: 'https://osmsmix.github.io/mauri-citat/',
     ),
     Project(
       title: 'Portfolio Website',
       description:
-          'This portfolio, built entirely with Flutter Web — featuring smooth animations and responsive design.',
+          'This portfolio, built entirely with Flutter Web — featuring smooth animations, responsive design, and a dark minimal aesthetic.',
       tags: ['Flutter Web', 'Dart', 'Responsive'],
-      githubUrl: 'https://github.com',
+      githubUrl: 'https://github.com/osmsmix/portfolio',
+      liveUrl: 'https://osmsmix.github.io/portfolio/',
     ),
   ];
 

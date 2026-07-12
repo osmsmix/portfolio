@@ -9668,7 +9668,7 @@ break
 case 4:s=l.a
 s===$&&A.b()
 s=A.aW(s,200)
-r=A.aW(A.QY(l,B.l_,B.BR),24)
+r=A.aW(A.QY(l,B.l_,B.BQ),24)
 q=A.aW(A.QY(l,B.l_,B.Ci),32)
 p=A.aW(l.a,10)
 o=A.aW(l.a,12)
@@ -24030,7 +24030,7 @@ if(e.b){q=t.f
 d=q.a(q.a(B.b1.dz(a2)).j(0,"data"))
 c=A.cf(d.j(0,"message"))
 if(c!=null&&c.length!==0){b=A.ac8(d,"assertiveness")
-e.a.Il(c,B.BP[b==null?0:b])}}a.cZ(a3,B.b1.b8(!0))
+e.a.Il(c,B.BO[b==null?0:b])}}a.cZ(a3,B.b1.b8(!0))
 return
 case"flutter/navigation":q=a.gbz().b
 p=t.e8
@@ -35473,7 +35473,7 @@ h=r[4]
 g=r[5]
 f=r[6]
 e=r[7]
-for(d=l,q=0;q<64;++q,e=f,f=g,g=h,h=b,i=j,j=k,k=d,d=a){c=(e+(((h>>>6|h<<26)^(h>>>11|h<<21)^(h>>>25|h<<7))>>>0)>>>0)+(((h&g^~h&f)>>>0)+(B.BT[q]+s[q]>>>0)>>>0)>>>0
+for(d=l,q=0;q<64;++q,e=f,f=g,g=h,h=b,i=j,j=k,k=d,d=a){c=(e+(((h>>>6|h<<26)^(h>>>11|h<<21)^(h>>>25|h<<7))>>>0)>>>0)+(((h&g^~h&f)>>>0)+(B.BS[q]+s[q]>>>0)>>>0)>>>0
 b=i+c>>>0
 a=c+((((d>>>2|d<<30)^(d>>>13|d<<19)^(d>>>22|d<<10))>>>0)+((d&k^d&j^k&j)>>>0)>>>0)>>>0}r.$flags&2&&A.a2(r)
 r[0]=d+l>>>0
@@ -64262,7 +64262,7 @@ $0(){return this.a.d=!1},
 $S:0}
 A.Cb.prototype={
 K(a){var s=null,r=A.bK(a,s,t.w).w.a.a<768,q=r?80:120,p=A.d([B.H7,B.cu,A.bX("How I Got Here",s,s,A.i1().$4$color$fontSize$fontWeight$letterSpacing(B.a4,r?32:40,B.aC,-1),s),B.fc],t.p)
-B.b.J(p,new A.lQ(B.BN,t.uF).geo().e4(0,new A.RE(),t.l7))
+B.b.J(p,new A.lQ(B.BU,t.uF).geo().e4(0,new A.RE(),t.l7))
 return A.dR(s,A.ny(new A.ee(B.wW,new A.cC(B.ce,A.ed(p,B.R,B.J,B.M),s),s),s,s),B.u,B.cW,s,s,s,s,s,new A.aX(0,q,0,q),s,s,1/0)}}
 A.RE.prototype={
 $1(a){var s=a.a
@@ -67754,9 +67754,9 @@ B.jg=new A.yG(0,"named")
 B.wz=new A.yG(1,"anonymous")
 B.BC=s([B.jg,B.wz],A.a6("x<yG>"))
 B.C1=s([0.41233895,0.35762064,0.18051042],t.n)
-B.BS=s([0.2126,0.7152,0.0722],t.n)
+B.BR=s([0.2126,0.7152,0.0722],t.n)
 B.CS=s([0.01932141,0.11916382,0.95034478],t.n)
-B.bJ=s([B.C1,B.BS,B.CS],t.zg)
+B.bJ=s([B.C1,B.BR,B.CS],t.zg)
 B.kY=s([0,4,12,1,5,13,3,7,15],t.t)
 B.bu=new A.iN(0,"left")
 B.cw=new A.iN(1,"right")
@@ -67765,18 +67765,18 @@ B.dy=new A.iN(3,"justify")
 B.aS=new A.iN(4,"start")
 B.ff=new A.iN(5,"end")
 B.BM=s([B.bu,B.cw,B.bW,B.dy,B.aS,B.ff],A.a6("x<iN>"))
+B.BO=s([B.fF,B.fG],A.a6("x<r1>"))
+B.BQ=s([18,15,10,12,15,18,15,12,12],t.n)
+B.BS=s([1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298],t.t)
 B.Cl=s(["Self-taught Flutter and Dart entirely through YouTube \u2014 no bootcamp, no course.","Started building small apps to practice while studying Petroleum Engineering."],t.s)
 B.AT=new A.hr("2023","Discovered Flutter",B.Cl)
 B.Cp=s(["Designed and developed a full-stack football pitch booking app from scratch.","Integrated Supabase, Firebase, interactive maps, push notifications, and trilingual support."],t.s)
 B.AS=new A.hr("2024","Built Mauri-Citat",B.Cp)
 B.Cc=s(["Published Mauri-Citat on the App Store and Google Play \u2014 fully solo.","Handled everything: architecture, UI, backend, deployment, and store submissions."],t.s)
-B.AV=new A.hr("2025","Shipped on Both Stores",B.Cc)
+B.AV=new A.hr("2026","Shipped on Both Stores",B.Cc)
 B.C3=s(["Actively looking for Flutter projects and collaborations.","Turning ideas into polished, production-ready apps."],t.s)
 B.AU=new A.hr("Now","Building More",B.C3)
-B.BN=s([B.AT,B.AS,B.AV,B.AU],A.a6("x<hr>"))
-B.BP=s([B.fF,B.fG],A.a6("x<r1>"))
-B.BR=s([18,15,10,12,15,18,15,12,12],t.n)
-B.BT=s([1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298],t.t)
+B.BU=s([B.AT,B.AS,B.AV,B.AU],A.a6("x<hr>"))
 B.CX=new A.io("en",null,"US")
 B.kZ=s([B.CX],t.ss)
 B.l_=s([0,41,61,101,131,181,251,301,360],t.n)
@@ -67849,8 +67849,8 @@ B.Cz=s([],t.XS)
 B.d3=s([B.bx,B.be,B.dG,B.dH,B.fE],t.QP)
 B.BH=s([0.001200833568784504,0.002389694492170889,0.0002795742885861124],t.n)
 B.Co=s([0.0005891086651375999,0.0029785502573438758,0.0003270666104008398],t.n)
-B.BQ=s([0.00010146692491640572,0.0005364214359186694,0.0032979401770712076],t.n)
-B.CM=s([B.BH,B.Co,B.BQ],t.zg)
+B.BP=s([0.00010146692491640572,0.0005364214359186694,0.0032979401770712076],t.n)
+B.CM=s([B.BH,B.Co,B.BP],t.zg)
 B.CN=s([45,95,45,20,45,90,45,45,45],t.n)
 B.CO=s([120,120,20,45,20,15,20,120,120],t.n)
 B.Cb=s(["Flutter","Supabase","Firebase","Flutter Map","Provider"],t.s)
@@ -68424,7 +68424,7 @@ B.C9=s([8589934850,8589934850,8589934851,null],t.Z)
 B.q6=new A.cL(["*",B.Bm,"+",B.Bn,"-",B.Bo,".",B.Bp,"/",B.Bq,"0",B.Br,"1",B.Bs,"2",B.Bt,"3",B.Bu,"4",B.Bv,"5",B.Bw,"6",B.Bx,"7",B.By,"8",B.Bz,"9",B.BB,"Alt",B.C6,"AltGraph",B.Bb,"ArrowDown",B.Bc,"ArrowLeft",B.Bd,"ArrowRight",B.Be,"ArrowUp",B.Bf,"Clear",B.Bk,"Control",B.C7,"Delete",B.Ba,"End",B.Bg,"Enter",B.B9,"Home",B.Bh,"Insert",B.Bl,"Meta",B.C8,"PageDown",B.Bi,"PageUp",B.Bj,"Shift",B.C9],A.a6("cL<y,M<l?>>"))
 B.BA=s([B.lc,null,null,B.pT],t.L)
 B.CD=s([B.pF,null,null,B.pU],t.L)
-B.BU=s([B.pG,null,null,B.pV],t.L)
+B.BT=s([B.pG,null,null,B.pV],t.L)
 B.Ca=s([B.pH,null,null,B.bM],t.L)
 B.B5=s([B.pI,null,null,B.pW],t.L)
 B.CK=s([B.pJ,null,null,B.id],t.L)
@@ -68434,7 +68434,7 @@ B.CR=s([B.pM,null,null,B.df],t.L)
 B.CI=s([B.pN,null,null,B.bO],t.L)
 B.BE=s([B.pO,null,null,B.ie],t.L)
 B.B8=s([B.pP,null,null,B.bP],t.L)
-B.BO=s([B.pQ,null,null,B.dg],t.L)
+B.BN=s([B.pQ,null,null,B.dg],t.L)
 B.CE=s([B.pR,null,null,B.bQ],t.L)
 B.CF=s([B.pS,null,null,B.dh],t.L)
 B.BI=s([B.dc,B.dc,B.ez,null],t.L)
@@ -68454,7 +68454,7 @@ B.BK=s([B.dd,B.dd,B.eA,null],t.L)
 B.C_=s([B.d7,null,null,B.df],t.L)
 B.Cr=s([B.d8,null,null,B.dh],t.L)
 B.BL=s([B.cg,B.cg,B.db,null],t.L)
-B.EA=new A.cL(["*",B.BA,"+",B.CD,"-",B.BU,".",B.Ca,"/",B.B5,"0",B.CK,"1",B.CJ,"2",B.BF,"3",B.CR,"4",B.CI,"5",B.BE,"6",B.B8,"7",B.BO,"8",B.CE,"9",B.CF,"Alt",B.BI,"AltGraph",B.CL,"ArrowDown",B.BV,"ArrowLeft",B.BW,"ArrowRight",B.BX,"ArrowUp",B.CP,"Clear",B.CG,"Control",B.BJ,"Delete",B.Cj,"End",B.BY,"Enter",B.BD,"Home",B.BZ,"Insert",B.CH,"Meta",B.BK,"PageDown",B.C_,"PageUp",B.Cr,"Shift",B.BL],A.a6("cL<y,M<e?>>"))
+B.EA=new A.cL(["*",B.BA,"+",B.CD,"-",B.BT,".",B.Ca,"/",B.B5,"0",B.CK,"1",B.CJ,"2",B.BF,"3",B.CR,"4",B.CI,"5",B.BE,"6",B.B8,"7",B.BN,"8",B.CE,"9",B.CF,"Alt",B.BI,"AltGraph",B.CL,"ArrowDown",B.BV,"ArrowLeft",B.BW,"ArrowRight",B.BX,"ArrowUp",B.CP,"Clear",B.CG,"Control",B.BJ,"Delete",B.Cj,"End",B.BY,"Enter",B.BD,"Home",B.BZ,"Insert",B.CH,"Meta",B.BK,"PageDown",B.C_,"PageUp",B.Cr,"Shift",B.BL],A.a6("cL<y,M<e?>>"))
 B.F5={KeyA:0,KeyB:1,KeyC:2,KeyD:3,KeyE:4,KeyF:5,KeyG:6,KeyH:7,KeyI:8,KeyJ:9,KeyK:10,KeyL:11,KeyM:12,KeyN:13,KeyO:14,KeyP:15,KeyQ:16,KeyR:17,KeyS:18,KeyT:19,KeyU:20,KeyV:21,KeyW:22,KeyX:23,KeyY:24,KeyZ:25,Digit1:26,Digit2:27,Digit3:28,Digit4:29,Digit5:30,Digit6:31,Digit7:32,Digit8:33,Digit9:34,Digit0:35,Minus:36,Equal:37,BracketLeft:38,BracketRight:39,Backslash:40,Semicolon:41,Quote:42,Backquote:43,Comma:44,Period:45,Slash:46}
 B.q7=new A.bs(B.F5,["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0","-","=","[","]","\\",";","'","`",",",".","/"],t.li)
 B.F1={Abort:0,Again:1,AltLeft:2,AltRight:3,ArrowDown:4,ArrowLeft:5,ArrowRight:6,ArrowUp:7,AudioVolumeDown:8,AudioVolumeMute:9,AudioVolumeUp:10,Backquote:11,Backslash:12,Backspace:13,BracketLeft:14,BracketRight:15,BrightnessDown:16,BrightnessUp:17,BrowserBack:18,BrowserFavorites:19,BrowserForward:20,BrowserHome:21,BrowserRefresh:22,BrowserSearch:23,BrowserStop:24,CapsLock:25,Comma:26,ContextMenu:27,ControlLeft:28,ControlRight:29,Convert:30,Copy:31,Cut:32,Delete:33,Digit0:34,Digit1:35,Digit2:36,Digit3:37,Digit4:38,Digit5:39,Digit6:40,Digit7:41,Digit8:42,Digit9:43,DisplayToggleIntExt:44,Eject:45,End:46,Enter:47,Equal:48,Escape:49,Esc:50,F1:51,F10:52,F11:53,F12:54,F13:55,F14:56,F15:57,F16:58,F17:59,F18:60,F19:61,F2:62,F20:63,F21:64,F22:65,F23:66,F24:67,F3:68,F4:69,F5:70,F6:71,F7:72,F8:73,F9:74,Find:75,Fn:76,FnLock:77,GameButton1:78,GameButton10:79,GameButton11:80,GameButton12:81,GameButton13:82,GameButton14:83,GameButton15:84,GameButton16:85,GameButton2:86,GameButton3:87,GameButton4:88,GameButton5:89,GameButton6:90,GameButton7:91,GameButton8:92,GameButton9:93,GameButtonA:94,GameButtonB:95,GameButtonC:96,GameButtonLeft1:97,GameButtonLeft2:98,GameButtonMode:99,GameButtonRight1:100,GameButtonRight2:101,GameButtonSelect:102,GameButtonStart:103,GameButtonThumbLeft:104,GameButtonThumbRight:105,GameButtonX:106,GameButtonY:107,GameButtonZ:108,Help:109,Home:110,Hyper:111,Insert:112,IntlBackslash:113,IntlRo:114,IntlYen:115,KanaMode:116,KeyA:117,KeyB:118,KeyC:119,KeyD:120,KeyE:121,KeyF:122,KeyG:123,KeyH:124,KeyI:125,KeyJ:126,KeyK:127,KeyL:128,KeyM:129,KeyN:130,KeyO:131,KeyP:132,KeyQ:133,KeyR:134,KeyS:135,KeyT:136,KeyU:137,KeyV:138,KeyW:139,KeyX:140,KeyY:141,KeyZ:142,KeyboardLayoutSelect:143,Lang1:144,Lang2:145,Lang3:146,Lang4:147,Lang5:148,LaunchApp1:149,LaunchApp2:150,LaunchAssistant:151,LaunchControlPanel:152,LaunchMail:153,LaunchScreenSaver:154,MailForward:155,MailReply:156,MailSend:157,MediaFastForward:158,MediaPause:159,MediaPlay:160,MediaPlayPause:161,MediaRecord:162,MediaRewind:163,MediaSelect:164,MediaStop:165,MediaTrackNext:166,MediaTrackPrevious:167,MetaLeft:168,MetaRight:169,MicrophoneMuteToggle:170,Minus:171,NonConvert:172,NumLock:173,Numpad0:174,Numpad1:175,Numpad2:176,Numpad3:177,Numpad4:178,Numpad5:179,Numpad6:180,Numpad7:181,Numpad8:182,Numpad9:183,NumpadAdd:184,NumpadBackspace:185,NumpadClear:186,NumpadClearEntry:187,NumpadComma:188,NumpadDecimal:189,NumpadDivide:190,NumpadEnter:191,NumpadEqual:192,NumpadMemoryAdd:193,NumpadMemoryClear:194,NumpadMemoryRecall:195,NumpadMemoryStore:196,NumpadMemorySubtract:197,NumpadMultiply:198,NumpadParenLeft:199,NumpadParenRight:200,NumpadSubtract:201,Open:202,PageDown:203,PageUp:204,Paste:205,Pause:206,Period:207,Power:208,PrintScreen:209,PrivacyScreenToggle:210,Props:211,Quote:212,Resume:213,ScrollLock:214,Select:215,SelectTask:216,Semicolon:217,ShiftLeft:218,ShiftRight:219,ShowAllWindows:220,Slash:221,Sleep:222,Space:223,Super:224,Suspend:225,Tab:226,Turbo:227,Undo:228,WakeUp:229,ZoomToggle:230}

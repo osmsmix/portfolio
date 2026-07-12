@@ -99,7 +99,7 @@ class PortfolioData {
       ],
     ),
     JourneyStep(
-      year: '2025',
+      year: '2026',
       title: 'Shipped on Both Stores',
       details: [
         'Published Mauri-Citat on the App Store and Google Play — fully solo.',

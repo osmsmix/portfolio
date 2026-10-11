@@ -32,7 +32,7 @@ jobs:
       # ─── OPTION B: repo is a project site (e.g. "portfolio") ───────────────
       # Replace "portfolio" with your actual repo name
       - name: Build web
-        run: flutter build web --base-href /portfolio/
+        run: flutter build web --wasm --base-href /portfolio/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

@@ -36,84 +36,15 @@ class HeroSection extends StatelessWidget {
                   horizontal: 32,
                   vertical: isMobile ? 96 : 64,
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '< Flutter Developer />',
-                      style: GoogleFonts.firaCode(
-                        fontSize: 13,
-                        color: AppColors.accent,
-                        letterSpacing: 0.5,
+                child: isMobile
+                    ? _HeroContentMobile(
+                        onProjectsTap: onProjectsTap,
+                        onContactTap: onContactTap,
+                      )
+                    : _HeroContentDesktop(
+                        onProjectsTap: onProjectsTap,
+                        onContactTap: onContactTap,
                       ),
-                    )
-                        .animate()
-                        .fadeIn(delay: 100.ms, duration: 600.ms),
-                    const SizedBox(height: 14),
-                    Text(
-                      "Hi, I'm\nOussama\nMohamed El Hadi.",
-                      style: GoogleFonts.spaceGrotesk(
-                        fontSize: isMobile ? 44 : 72,
-                        fontWeight: FontWeight.w800,
-                        color: AppColors.textPrimary,
-                        height: 1.0,
-                        letterSpacing: -3,
-                      ),
-                    )
-                        .animate()
-                        .fadeIn(delay: 300.ms, duration: 700.ms)
-                        .slideY(
-                          begin: 0.15,
-                          end: 0,
-                          delay: 300.ms,
-                          duration: 700.ms,
-                          curve: Curves.easeOut,
-                        ),
-                    const SizedBox(height: 20),
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 540),
-                      child: TypewriterText(
-                        text: PortfolioData.tagline,
-                        startDelay: const Duration(milliseconds: 900),
-                        style: GoogleFonts.inter(
-                          fontSize: isMobile ? 17 : 19,
-                          color: AppColors.textSecondary,
-                          height: 1.7,
-                        ),
-                      ),
-                    ).animate().fadeIn(delay: 500.ms, duration: 400.ms),
-                    const SizedBox(height: 32),
-                    Wrap(
-                      spacing: 16,
-                      runSpacing: 16,
-                      children: [
-                        _HeroButton(
-                          label: 'View My Work',
-                          isPrimary: true,
-                          onTap: onProjectsTap,
-                        ),
-                        _HeroButton(
-                          label: 'Get In Touch',
-                          isPrimary: false,
-                          onTap: onContactTap,
-                        ),
-                        if (PortfolioData.cvUrl != null)
-                          _HeroButton(
-                            label: 'Download CV',
-                            isPrimary: false,
-                            onTap: () async {
-                              final uri = Uri.parse(PortfolioData.cvUrl!);
-                              if (await canLaunchUrl(uri)) {
-                                await launchUrl(uri,
-                                    mode: LaunchMode.externalApplication);
-                              }
-                            },
-                          ),
-                      ],
-                    ).animate().fadeIn(delay: 700.ms, duration: 600.ms),
-                  ],
-                ),
               ),
             ),
           ),
@@ -132,6 +63,217 @@ class HeroSection extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _HeroContentDesktop extends StatelessWidget {
+  final VoidCallback onProjectsTap;
+  final VoidCallback onContactTap;
+
+  const _HeroContentDesktop({
+    required this.onProjectsTap,
+    required this.onContactTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 6,
+          child: _HeroText(
+            onProjectsTap: onProjectsTap,
+            onContactTap: onContactTap,
+            isMobile: false,
+          ),
+        ),
+        const SizedBox(width: 64),
+        const Expanded(
+          flex: 4,
+          child: Center(child: _AvatarWidget(size: 300)),
+        ),
+      ],
+    );
+  }
+}
+
+class _HeroContentMobile extends StatelessWidget {
+  final VoidCallback onProjectsTap;
+  final VoidCallback onContactTap;
+
+  const _HeroContentMobile({
+    required this.onProjectsTap,
+    required this.onContactTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Center(child: _AvatarWidget(size: 120)),
+        const SizedBox(height: 32),
+        _HeroText(
+          onProjectsTap: onProjectsTap,
+          onContactTap: onContactTap,
+          isMobile: true,
+        ),
+      ],
+    );
+  }
+}
+
+class _AvatarWidget extends StatelessWidget {
+  final double size;
+
+  const _AvatarWidget({required this.size});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: const LinearGradient(
+          colors: [Color(0xFF00D4AA), Color(0xFF0088AA)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0x5500D4AA),
+            blurRadius: size * 0.3,
+            spreadRadius: size * 0.02,
+          ),
+        ],
+      ),
+      padding: const EdgeInsets.all(3),
+      child: ClipOval(
+        child: PortfolioData.photoAsset != null
+            ? Image.asset(
+                PortfolioData.photoAsset!,
+                fit: BoxFit.cover,
+              )
+            : Container(
+                color: AppColors.surface,
+                child: Center(
+                  child: Text(
+                    'OM',
+                    style: TextStyle(
+                      fontSize: size * 0.28,
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.accent,
+                      letterSpacing: size * 0.01,
+                    ),
+                  ),
+                ),
+              ),
+      ),
+    )
+        .animate()
+        .fadeIn(delay: 400.ms, duration: 800.ms)
+        .scale(
+          begin: const Offset(0.85, 0.85),
+          end: const Offset(1, 1),
+          delay: 400.ms,
+          duration: 800.ms,
+          curve: Curves.easeOut,
+        );
+  }
+}
+
+class _HeroText extends StatelessWidget {
+  final VoidCallback onProjectsTap;
+  final VoidCallback onContactTap;
+  final bool isMobile;
+
+  const _HeroText({
+    required this.onProjectsTap,
+    required this.onContactTap,
+    required this.isMobile,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          '< Flutter Developer />',
+          style: GoogleFonts.firaCode(
+            fontSize: 13,
+            color: AppColors.accent,
+            letterSpacing: 0.5,
+          ),
+        ).animate().fadeIn(delay: 100.ms, duration: 600.ms),
+        const SizedBox(height: 14),
+        Text(
+          "Hi, I'm\nOussama\nMohamed El Hadi.",
+          style: GoogleFonts.spaceGrotesk(
+            fontSize: isMobile ? 44 : 64,
+            fontWeight: FontWeight.w800,
+            color: AppColors.textPrimary,
+            height: 1.0,
+            letterSpacing: -3,
+          ),
+        )
+            .animate()
+            .fadeIn(delay: 300.ms, duration: 700.ms)
+            .slideY(
+              begin: 0.15,
+              end: 0,
+              delay: 300.ms,
+              duration: 700.ms,
+              curve: Curves.easeOut,
+            ),
+        const SizedBox(height: 20),
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 520),
+          child: TypewriterText(
+            text: PortfolioData.tagline,
+            startDelay: const Duration(milliseconds: 900),
+            style: GoogleFonts.inter(
+              fontSize: isMobile ? 17 : 18,
+              color: AppColors.textSecondary,
+              height: 1.7,
+            ),
+          ),
+        ).animate().fadeIn(delay: 500.ms, duration: 400.ms),
+        const SizedBox(height: 32),
+        Wrap(
+          spacing: 16,
+          runSpacing: 16,
+          children: [
+            _HeroButton(
+              label: 'View My Work',
+              isPrimary: true,
+              onTap: onProjectsTap,
+            ),
+            _HeroButton(
+              label: 'Get In Touch',
+              isPrimary: false,
+              onTap: onContactTap,
+            ),
+            if (PortfolioData.cvUrl != null)
+              _HeroButton(
+                label: 'Download CV',
+                isPrimary: false,
+                onTap: () async {
+                  final uri = Uri.parse(PortfolioData.cvUrl!);
+                  if (await canLaunchUrl(uri)) {
+                    await launchUrl(uri,
+                        mode: LaunchMode.externalApplication);
+                  }
+                },
+              ),
+          ],
+        ).animate().fadeIn(delay: 700.ms, duration: 600.ms),
+      ],
     );
   }
 }

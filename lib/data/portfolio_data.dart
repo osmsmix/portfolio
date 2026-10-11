@@ -42,6 +42,9 @@ class PortfolioData {
       "I care deeply about clean architecture, smooth animations, and intuitive UX "
       "that makes complex products feel effortless.";
 
+  // Set to 'assets/images/avatar.jpg' (or .png) after adding your photo
+  static const String? photoAsset = null;
+
   static const String email = 'oussama.mohamedelhadi@gmail.com';
   static const String github = 'https://github.com/osmsmix';
   static const String linkedin = 'https://www.linkedin.com/in/oussama-mohamed-el-hadi-3b5344260';
@@ -85,16 +88,14 @@ class PortfolioData {
       description:
           'School management platform connecting directors, teachers, and parents. Features bulletin boards, grade tracking, absence reporting, timetables, and PDF report generation. Backend powered by Supabase.',
       tags: ['Flutter', 'Supabase', 'Provider', 'i18n', 'PDF'],
-      inDevelopment: true,
+      appStoreUrl: 'https://apps.apple.com/tn/app/madrasa/id6815927815',
     ),
     Project(
       title: 'PetroTools',
       description:
           'Engineering toolkit for petroleum students. Currently features an IPR (Inflow Performance Relationship) calculator for computing AOF and productivity index from well test data, with interactive charts.',
       tags: ['Flutter', 'Dart', 'fl_chart', 'Engineering'],
-      // Add store URLs below when available:
-      // appStoreUrl: 'https://apps.apple.com/app/...',
-      // playStoreUrl: 'https://play.google.com/store/apps/details?id=engs.oussama.petrotools',
+      appStoreUrl: 'https://apps.apple.com/tn/app/petrotools/id6792877304',
     ),
     Project(
       title: 'Portfolio Website',

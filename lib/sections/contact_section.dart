@@ -61,7 +61,41 @@ class ContactSection extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 _CopyEmailButton(),
-                const SizedBox(height: 56),
+                const SizedBox(height: 48),
+                // Freelance platforms
+                Text(
+                  'Or hire me on',
+                  style: GoogleFonts.inter(
+                    fontSize: 13,
+                    color: AppColors.textMuted,
+                    letterSpacing: 1.2,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 20),
+                Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 12,
+                  runSpacing: 12,
+                  children: [
+                    _PlatformButton(
+                      label: 'Upwork',
+                      color: const Color(0xFF6FDA44),
+                      onTap: () => _open(PortfolioData.upwork),
+                    ),
+                    _PlatformButton(
+                      label: 'Fiverr',
+                      color: const Color(0xFF1DBF73),
+                      onTap: () => _open(PortfolioData.fiverr),
+                    ),
+                    _PlatformButton(
+                      label: 'Mostaql',
+                      color: const Color(0xFF2EB6E1),
+                      onTap: () => _open(PortfolioData.mostaql),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 48),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -193,6 +227,63 @@ class _SocialLinkState extends State<_SocialLink> {
               const SizedBox(width: 6),
               Text(widget.label),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PlatformButton extends StatefulWidget {
+  final String label;
+  final Color color;
+  final VoidCallback onTap;
+
+  const _PlatformButton({
+    required this.label,
+    required this.color,
+    required this.onTap,
+  });
+
+  @override
+  State<_PlatformButton> createState() => _PlatformButtonState();
+}
+
+class _PlatformButtonState extends State<_PlatformButton> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 160),
+          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
+          decoration: BoxDecoration(
+            color: _hovered ? widget.color : Colors.transparent,
+            border: Border.all(color: widget.color, width: 1.5),
+            borderRadius: BorderRadius.circular(8),
+            boxShadow: _hovered
+                ? [
+                    BoxShadow(
+                      color: widget.color.withAlpha(60),
+                      blurRadius: 20,
+                      offset: const Offset(0, 6),
+                    ),
+                  ]
+                : [],
+          ),
+          child: Text(
+            widget.label,
+            style: GoogleFonts.inter(
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              color: _hovered ? Colors.black : widget.color,
+            ),
           ),
         ),
       ),

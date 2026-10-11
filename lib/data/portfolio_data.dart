@@ -47,7 +47,10 @@ class PortfolioData {
   static const String email = 'oussama.mohamedelhadi@gmail.com';
   static const String github = 'https://github.com/osmsmix';
   static const String linkedin = 'https://www.linkedin.com/in/oussama-mohamed-el-hadi-3b5344260';
-  static const String? cvUrl = null; // Set to your CV PDF URL when ready
+  static const String upwork = 'https://www.upwork.com/freelancers/~01825ff64c8093996f?mp_source=share';
+  static const String fiverr = 'https://www.fiverr.com/s/Vrrklkz';
+  static const String mostaql = 'https://mostaql.com/u/oussama_elhadi';
+  static const String? cvUrl = null;
 
   static const List<String> skills = [
     'Flutter',

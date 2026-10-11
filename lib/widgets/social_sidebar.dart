@@ -37,6 +37,12 @@ class SocialSidebar extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           _SideIcon(
+            icon: Icons.work_outline_rounded,
+            tooltip: 'Upwork',
+            onTap: () => _open(PortfolioData.upwork),
+          ),
+          const SizedBox(height: 20),
+          _SideIcon(
             icon: Icons.mail_outline_rounded,
             tooltip: 'Email',
             onTap: () => _open('mailto:${PortfolioData.email}'),

@@ -4,6 +4,9 @@ class Project {
   final List<String> tags;
   final String? githubUrl;
   final String? liveUrl;
+  final String? appStoreUrl;
+  final String? playStoreUrl;
+  final bool inDevelopment;
 
   const Project({
     required this.title,
@@ -11,6 +14,9 @@ class Project {
     required this.tags,
     this.githubUrl,
     this.liveUrl,
+    this.appStoreUrl,
+    this.playStoreUrl,
+    this.inDevelopment = false,
   });
 }
 
@@ -71,11 +77,29 @@ class PortfolioData {
           'Football pitch booking app for Mauritania. Players browse pitches on an interactive map, check availability, and book by time slot. Owners manage reservations in real time. Trilingual (AR/FR/EN).',
       tags: ['Flutter', 'Supabase', 'Firebase', 'Flutter Map', 'Provider'],
       liveUrl: 'https://osmsmix.github.io/mauri-citat/',
+      appStoreUrl: 'https://apps.apple.com/app/id6772883634',
+      playStoreUrl: 'https://play.google.com/store/apps/details?id=engs.mauri.citat',
+    ),
+    Project(
+      title: 'Madrasa',
+      description:
+          'School management platform connecting directors, teachers, and parents. Features bulletin boards, grade tracking, absence reporting, timetables, and PDF report generation. Backend powered by Supabase.',
+      tags: ['Flutter', 'Supabase', 'Provider', 'i18n', 'PDF'],
+      inDevelopment: true,
+    ),
+    Project(
+      title: 'PetroTools',
+      description:
+          'Engineering toolkit for petroleum students. Currently features an IPR (Inflow Performance Relationship) calculator for computing AOF and productivity index from well test data, with interactive charts.',
+      tags: ['Flutter', 'Dart', 'fl_chart', 'Engineering'],
+      // Add store URLs below when available:
+      // appStoreUrl: 'https://apps.apple.com/app/...',
+      // playStoreUrl: 'https://play.google.com/store/apps/details?id=engs.oussama.petrotools',
     ),
     Project(
       title: 'Portfolio Website',
       description:
-          'This portfolio, built entirely with Flutter Web — featuring smooth animations, responsive design, and a dark minimal aesthetic.',
+          'This portfolio, built entirely with Flutter Web — featuring scroll-triggered animations, a typewriter effect, responsive design, and a dark minimal aesthetic.',
       tags: ['Flutter Web', 'Dart', 'Responsive'],
       githubUrl: 'https://github.com/osmsmix/portfolio',
       liveUrl: 'https://osmsmix.github.io/portfolio/',

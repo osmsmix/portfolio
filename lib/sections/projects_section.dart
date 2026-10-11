@@ -13,7 +13,6 @@ class ProjectsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final isMobile = width < 768;
-    final isTablet = width < 1100;
 
     return Container(
       width: double.infinity,
@@ -38,28 +37,67 @@ class ProjectsSection extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 48),
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: isMobile ? 1 : (isTablet ? 2 : 2),
-                    crossAxisSpacing: 24,
-                    mainAxisSpacing: 24,
-                    mainAxisExtent: isMobile ? 260 : 280,
-                  ),
-                  itemCount: PortfolioData.projects.length,
-                  itemBuilder: (context, index) {
-                    return _ProjectCard(
-                      project: PortfolioData.projects[index],
-                      delay: (index * 100).ms,
-                    );
-                  },
-                ),
+                if (isMobile)
+                  Column(
+                    children: [
+                      for (int i = 0; i < PortfolioData.projects.length; i++) ...[
+                        if (i > 0) const SizedBox(height: 24),
+                        _ProjectCard(
+                          project: PortfolioData.projects[i],
+                          delay: (i * 100).ms,
+                        ),
+                      ],
+                    ],
+                  )
+                else
+                  const _ProjectGrid(projects: PortfolioData.projects),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+// Desktop 2-column grid with auto height using LayoutBuilder + two Columns
+class _ProjectGrid extends StatelessWidget {
+  final List<Project> projects;
+
+  const _ProjectGrid({required this.projects});
+
+  @override
+  Widget build(BuildContext context) {
+    final left = <Project>[];
+    final right = <Project>[];
+    for (var i = 0; i < projects.length; i++) {
+      (i.isEven ? left : right).add(projects[i]);
+    }
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Column(
+            children: [
+              for (var i = 0; i < left.length; i++) ...[
+                if (i > 0) const SizedBox(height: 24),
+                _ProjectCard(project: left[i], delay: ((i * 2) * 100).ms),
+              ],
+            ],
+          ),
+        ),
+        const SizedBox(width: 24),
+        Expanded(
+          child: Column(
+            children: [
+              for (var i = 0; i < right.length; i++) ...[
+                if (i > 0) const SizedBox(height: 24),
+                _ProjectCard(project: right[i], delay: ((i * 2 + 1) * 100).ms),
+              ],
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -86,6 +124,9 @@ class _ProjectCardState extends State<_ProjectCard> {
 
   @override
   Widget build(BuildContext context) {
+    final p = widget.project;
+    final hasStoreLinks = p.appStoreUrl != null || p.playStoreUrl != null;
+
     return MouseRegion(
       onEnter: (_) => setState(() => _hovered = true),
       onExit: (_) => setState(() => _hovered = false),
@@ -95,9 +136,7 @@ class _ProjectCardState extends State<_ProjectCard> {
         decoration: BoxDecoration(
           color: _hovered ? AppColors.card : AppColors.surface,
           border: Border.all(
-            color: _hovered
-                ? const Color(0x6600D4AA)
-                : AppColors.border,
+            color: _hovered ? const Color(0x6600D4AA) : AppColors.border,
           ),
           borderRadius: BorderRadius.circular(16),
           boxShadow: _hovered
@@ -112,7 +151,9 @@ class _ProjectCardState extends State<_ProjectCard> {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
+            // Top row: folder icon + action links
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -120,16 +161,36 @@ class _ProjectCardState extends State<_ProjectCard> {
                     color: AppColors.accent, size: 32),
                 Row(
                   children: [
-                    if (widget.project.githubUrl != null)
-                      _IconButton(
-                        icon: Icons.code_rounded,
-                        onTap: () => _open(widget.project.githubUrl!),
+                    if (p.inDevelopment)
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 3),
+                        decoration: BoxDecoration(
+                          color: const Color(0x26F0AD00),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Text(
+                          'In Development',
+                          style: GoogleFonts.firaCode(
+                            fontSize: 11,
+                            color: const Color(0xFFF0AD00),
+                          ),
+                        ),
                       ),
-                    if (widget.project.liveUrl != null) ...[
+                    if (p.githubUrl != null) ...[
                       const SizedBox(width: 4),
-                      _IconButton(
+                      _IconBtn(
+                        icon: Icons.code_rounded,
+                        tooltip: 'Repository',
+                        onTap: () => _open(p.githubUrl!),
+                      ),
+                    ],
+                    if (p.liveUrl != null) ...[
+                      const SizedBox(width: 4),
+                      _IconBtn(
                         icon: Icons.open_in_new_rounded,
-                        onTap: () => _open(widget.project.liveUrl!),
+                        tooltip: 'Live demo',
+                        onTap: () => _open(p.liveUrl!),
                       ),
                     ],
                   ],
@@ -137,8 +198,9 @@ class _ProjectCardState extends State<_ProjectCard> {
               ],
             ),
             const SizedBox(height: 20),
+            // Title
             Text(
-              widget.project.title,
+              p.title,
               style: GoogleFonts.spaceGrotesk(
                 fontSize: 19,
                 fontWeight: FontWeight.w600,
@@ -146,23 +208,21 @@ class _ProjectCardState extends State<_ProjectCard> {
               ),
             ),
             const SizedBox(height: 8),
-            Expanded(
-              child: Text(
-                widget.project.description,
-                style: GoogleFonts.inter(
-                  fontSize: 14,
-                  color: AppColors.textSecondary,
-                  height: 1.65,
-                ),
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
+            // Description
+            Text(
+              p.description,
+              style: GoogleFonts.inter(
+                fontSize: 14,
+                color: AppColors.textSecondary,
+                height: 1.65,
               ),
             ),
             const SizedBox(height: 16),
+            // Tech tags
             Wrap(
               spacing: 8,
               runSpacing: 8,
-              children: widget.project.tags.map((tag) {
+              children: p.tags.map((tag) {
                 return Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -180,6 +240,30 @@ class _ProjectCardState extends State<_ProjectCard> {
                 );
               }).toList(),
             ),
+            // Store badges
+            if (hasStoreLinks) ...[
+              const SizedBox(height: 20),
+              const Divider(color: AppColors.border, height: 1),
+              const SizedBox(height: 16),
+              Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: [
+                  if (p.appStoreUrl != null)
+                    _StoreBadge(
+                      label: 'App Store',
+                      icon: Icons.phone_iphone,
+                      onTap: () => _open(p.appStoreUrl!),
+                    ),
+                  if (p.playStoreUrl != null)
+                    _StoreBadge(
+                      label: 'Google Play',
+                      icon: Icons.android,
+                      onTap: () => _open(p.playStoreUrl!),
+                    ),
+                ],
+              ),
+            ],
           ],
         ),
       ),
@@ -196,17 +280,60 @@ class _ProjectCardState extends State<_ProjectCard> {
   }
 }
 
-class _IconButton extends StatefulWidget {
+class _IconBtn extends StatefulWidget {
+  final IconData icon;
+  final String tooltip;
+  final VoidCallback onTap;
+
+  const _IconBtn({required this.icon, required this.tooltip, required this.onTap});
+
+  @override
+  State<_IconBtn> createState() => _IconBtnState();
+}
+
+class _IconBtnState extends State<_IconBtn> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: widget.tooltip,
+      child: MouseRegion(
+        onEnter: (_) => setState(() => _hovered = true),
+        onExit: (_) => setState(() => _hovered = false),
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: widget.onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(6),
+            child: Icon(
+              widget.icon,
+              size: 18,
+              color: _hovered ? AppColors.textPrimary : AppColors.textSecondary,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _StoreBadge extends StatefulWidget {
+  final String label;
   final IconData icon;
   final VoidCallback onTap;
 
-  const _IconButton({required this.icon, required this.onTap});
+  const _StoreBadge({
+    required this.label,
+    required this.icon,
+    required this.onTap,
+  });
 
   @override
-  State<_IconButton> createState() => _IconButtonState();
+  State<_StoreBadge> createState() => _StoreBadgeState();
 }
 
-class _IconButtonState extends State<_IconButton> {
+class _StoreBadgeState extends State<_StoreBadge> {
   bool _hovered = false;
 
   @override
@@ -217,13 +344,38 @@ class _IconButtonState extends State<_IconButton> {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: widget.onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(6),
-          child: Icon(
-            widget.icon,
-            size: 18,
-            color:
-                _hovered ? AppColors.textPrimary : AppColors.textSecondary,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 160),
+          padding:
+              const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          decoration: BoxDecoration(
+            color: _hovered
+                ? const Color(0x3300D4AA)
+                : const Color(0x1A00D4AA),
+            border: Border.all(
+              color: _hovered
+                  ? AppColors.accent
+                  : const Color(0x4000D4AA),
+            ),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(widget.icon, size: 15, color: AppColors.accent),
+              const SizedBox(width: 6),
+              Text(
+                widget.label,
+                style: GoogleFonts.inter(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.accent,
+                ),
+              ),
+              const SizedBox(width: 4),
+              const Icon(Icons.open_in_new_rounded,
+                  size: 12, color: AppColors.accent),
+            ],
           ),
         ),
       ),

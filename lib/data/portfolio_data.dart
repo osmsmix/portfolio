@@ -42,8 +42,7 @@ class PortfolioData {
       "I care deeply about clean architecture, smooth animations, and intuitive UX "
       "that makes complex products feel effortless.";
 
-  // Set to 'assets/images/avatar.jpg' (or .png) after adding your photo
-  static const String? photoAsset = null;
+  static const String? photoAsset = 'assets/images/oussama.jpg';
 
   static const String email = 'oussama.mohamedelhadi@gmail.com';
   static const String github = 'https://github.com/osmsmix';

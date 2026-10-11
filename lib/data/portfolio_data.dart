@@ -88,7 +88,7 @@ class PortfolioData {
           'School management platform connecting directors, teachers, and parents. Features bulletin boards, grade tracking, absence reports, timetables, and PDF generation. Trilingual (AR/FR/EN). Backend on Supabase.',
       tags: ['Flutter', 'Supabase', 'Provider', 'i18n', 'PDF'],
       appStoreUrl: 'https://apps.apple.com/tn/app/madrasa/id6815927815',
-      // liveUrl: 'https://...', // Add Madrasa website URL here
+      liveUrl: 'https://inquisitive-froyo-19130a.netlify.app',
     ),
     Project(
       title: 'Pharmacy Platform',

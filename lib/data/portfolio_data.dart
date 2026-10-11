@@ -36,13 +36,13 @@ class PortfolioData {
   static const String name = 'Oussama Mohamed El Hadi';
   static const String title = 'Flutter Developer';
   static const String tagline =
-      'I build beautiful, performant cross-platform apps for mobile and web.';
+      'I build mobile apps and websites — and handle everything needed to get them live on the App Store and Google Play.';
   static const String bio =
-      "I'm a Flutter developer passionate about crafting elegant experiences. "
-      "I care deeply about clean architecture, smooth animations, and intuitive UX "
-      "that makes complex products feel effortless.";
+      "I'm a Flutter developer based in Tunisia. I take projects from idea to published app — "
+      "UI design, backend integration, and full store submission on both the App Store and Google Play. "
+      "All my published apps are built and shipped solo.";
 
-  static const String? photoAsset = 'assets/images/oussama.jpg';
+  static const String photoAsset = 'assets/images/oussama.jpg';
 
   static const String email = 'oussama.mohamedelhadi@gmail.com';
   static const String github = 'https://github.com/osmsmix';
@@ -85,21 +85,36 @@ class PortfolioData {
     Project(
       title: 'Madrasa',
       description:
-          'School management platform connecting directors, teachers, and parents. Features bulletin boards, grade tracking, absence reporting, timetables, and PDF report generation. Backend powered by Supabase.',
+          'School management platform connecting directors, teachers, and parents. Features bulletin boards, grade tracking, absence reports, timetables, and PDF generation. Trilingual (AR/FR/EN). Backend on Supabase.',
       tags: ['Flutter', 'Supabase', 'Provider', 'i18n', 'PDF'],
       appStoreUrl: 'https://apps.apple.com/tn/app/madrasa/id6815927815',
+      // liveUrl: 'https://...', // Add Madrasa website URL here
+    ),
+    Project(
+      title: 'Pharmacy Platform',
+      description:
+          'A dual-app pharmacy platform: patients browse nearby pharmacies on a map and order medication, while pharmacists manage orders in real time. Features biometric login, push notifications, and geolocation.',
+      tags: ['Flutter', 'Firebase', 'Flutter Map', 'Geolocator', 'i18n'],
+      inDevelopment: true,
+    ),
+    Project(
+      title: 'Taxi – Ride-Hailing',
+      description:
+          'A full ride-hailing platform with four roles: rider, driver, dispatcher, and owner. Drivers get live requests with TTS announcements and real-time tracking on Google Maps. Includes driver subscriptions and multi-language support.',
+      tags: ['Flutter', 'Firebase', 'Google Maps', 'Real-time', 'i18n'],
+      inDevelopment: true,
     ),
     Project(
       title: 'PetroTools',
       description:
-          'Engineering toolkit for petroleum students. Currently features an IPR (Inflow Performance Relationship) calculator for computing AOF and productivity index from well test data, with interactive charts.',
+          'Engineering toolkit for petroleum students. Features an IPR (Inflow Performance Relationship) calculator for computing AOF and productivity index from well test data, with interactive charts.',
       tags: ['Flutter', 'Dart', 'fl_chart', 'Engineering'],
       appStoreUrl: 'https://apps.apple.com/tn/app/petrotools/id6792877304',
     ),
     Project(
       title: 'Portfolio Website',
       description:
-          'This portfolio, built entirely with Flutter Web — featuring scroll-triggered animations, a typewriter effect, responsive design, and a dark minimal aesthetic.',
+          'This portfolio, built with Flutter Web — scroll-triggered animations, typewriter effect, responsive layout, and a dark minimal aesthetic.',
       tags: ['Flutter Web', 'Dart', 'Responsive'],
       githubUrl: 'https://github.com/osmsmix/portfolio',
       liveUrl: 'https://osmsmix.github.io/portfolio/',

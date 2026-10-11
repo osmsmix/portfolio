@@ -73,7 +73,8 @@ class _AboutText extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         Text(
-          "When I'm not shipping apps, I'm exploring new design trends, contributing to open source, or experimenting with the latest Flutter features.",
+          "I also offer App Store & Google Play publishing as a standalone service — "
+          "if you have a finished app, I can handle the entire submission process for you.",
           style: GoogleFonts.inter(
             fontSize: 17,
             color: AppColors.textSecondary,

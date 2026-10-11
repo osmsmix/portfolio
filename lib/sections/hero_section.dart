@@ -153,25 +153,10 @@ class _AvatarWidget extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(3),
       child: ClipOval(
-        child: PortfolioData.photoAsset != null
-            ? Image.asset(
-                PortfolioData.photoAsset!,
-                fit: BoxFit.cover,
-              )
-            : Container(
-                color: AppColors.surface,
-                child: Center(
-                  child: Text(
-                    'OM',
-                    style: TextStyle(
-                      fontSize: size * 0.28,
-                      fontWeight: FontWeight.w800,
-                      color: AppColors.accent,
-                      letterSpacing: size * 0.01,
-                    ),
-                  ),
-                ),
-              ),
+        child: Image.asset(
+          PortfolioData.photoAsset,
+          fit: BoxFit.cover,
+        ),
       ),
     )
         .animate()
